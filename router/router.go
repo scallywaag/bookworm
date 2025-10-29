@@ -1,17 +1,25 @@
 package router
 
-import "github.com/labstack/echo/v4"
+import (
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+)
 
 func mockHandler(c echo.Context) error {
-	return nil
+	return c.String(http.StatusOK, "This is a test response")
 }
 
-func setupRoutes(e *echo.Echo) {
+func pong(c echo.Context) error {
+	return c.String(http.StatusOK, "pong!")
+}
+
+func SetupRoutes(e *echo.Echo) {
 	e.GET("/", mockHandler)
 	e.POST("/login", mockHandler)
 	e.POST("/register", mockHandler)
 
-	e.GET("/health", mockHandler)
+	e.GET("/ping", pong)
 
 	e.POST("/users", mockHandler)
 	e.GET("/users/:id", mockHandler)
