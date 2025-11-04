@@ -1,4 +1,4 @@
-module github.com/scallywaag/bookworm-echo
+module github.com/scallywaag/bookworm
 
 go 1.25.1
 
