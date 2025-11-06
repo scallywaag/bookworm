@@ -26,7 +26,7 @@ create:
 		echo "Usage: make create NAME=migration_name"; \
 		exit 1; \
 	fi
-	goose create $(NAME) sql
+	goose -dir ${MIGRATIONS_DIR} create $(NAME) sql
 
 # Status of migrations
 status:
