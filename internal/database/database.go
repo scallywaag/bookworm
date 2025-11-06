@@ -11,17 +11,7 @@ var DB *sql.DB
 
 func Init() (string, error) {
 	var err error
-	DB, err = sql.Open("sqlite3", "bookworm.db")
-	if err != nil {
-		return "", err
-	}
-
-	sqlStmt := `
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY,
-        name TEXT
-    );`
-	_, err = DB.Exec(sqlStmt)
+	DB, err = sql.Open("sqlite3", "file:bookworm.db?_foreign_keys=on")
 	if err != nil {
 		return "", err
 	}
