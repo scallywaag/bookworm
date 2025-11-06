@@ -16,6 +16,10 @@ func Init() (string, error) {
 		return "", err
 	}
 
+	if err = DB.Ping(); err != nil {
+		return "", err
+	}
+
 	return "Database initialized successfully", nil
 }
 
