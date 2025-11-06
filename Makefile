@@ -1,7 +1,7 @@
 DB_PATH := bookworm.db
 MIGRATIONS_DIR := migrations
 
-.PHONY: run watch migrate up down create status
+.PHONY: run watch tidy migrate up down create status clean
 
 # Run the project
 run:
@@ -10,6 +10,10 @@ run:
 # Run the project with hot reload active
 watch:
 	air
+
+# Clean go mod
+tidy:
+	go mod tidy
 
 # Run all migrations
 migrate:
@@ -35,4 +39,9 @@ create:
 # Status of migrations
 status:
 	goose -dir $(MIGRATIONS_DIR) sqlite3 $(DB_PATH) status
+
+# Reset database data
+clean:
+	rm -f $(DB_PATH)
+	$(MAKE) migrate
 
