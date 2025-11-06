@@ -1,7 +1,11 @@
 DB_PATH := bookworm.db
 MIGRATIONS_DIR := migrations
 
-.PHONY: watch migrate up down create status
+.PHONY: run watch migrate up down create status
+
+# Run the project
+run:
+	go run .
 
 # Run the project with hot reload active
 watch:
@@ -22,11 +26,11 @@ down:
 # Create a new migration file
 # Usage: make create NAME=create_users_table
 create:
-	@if [ -z "$(NAME)" ]; then \
-		echo "Usage: make create NAME=migration_name"; \
+	@if [ -z "$(name)" ]; then \
+		echo "Usage: make create name=migration_name"; \
 		exit 1; \
 	fi
-	goose -dir ${MIGRATIONS_DIR} create $(NAME) sql
+	goose -dir ${MIGRATIONS_DIR} create $(name) sql
 
 # Status of migrations
 status:
