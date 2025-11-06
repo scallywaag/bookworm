@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/scallywaag/bookworm-echo/router"
+	"github.com/scallywaag/bookworm/router"
 )
 
 func main() {
