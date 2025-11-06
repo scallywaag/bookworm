@@ -1,17 +1,14 @@
 -- +goose Up
 -- +goose StatementBegin
 SELECT 'up SQL query';
-CREATE TABLE users (
+CREATE TABLE genres (
     id INTEGER PRIMARY KEY,
-    username TEXT NOT NULL,
-	email TEXT UNIQUE NOT NULL,
-    password TEXT,
-    role TEXT NOT NULL DEFAULT 'user'
+    name TEXT UNIQUE NOT NULL
 );
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
 SELECT 'down SQL query';
-DROP TABLE users;
+DROP TABLE genres;
 -- +goose StatementEnd

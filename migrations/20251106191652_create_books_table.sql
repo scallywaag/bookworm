@@ -1,17 +1,17 @@
 -- +goose Up
 -- +goose StatementBegin
 SELECT 'up SQL query';
-CREATE TABLE users (
+CREATE TABLE books (
     id INTEGER PRIMARY KEY,
-    username TEXT NOT NULL,
-	email TEXT UNIQUE NOT NULL,
-    password TEXT,
-    role TEXT NOT NULL DEFAULT 'user'
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    description TEXT NOT NULL
 );
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
 SELECT 'down SQL query';
-DROP TABLE users;
+DROP TABLE books;
 -- +goose StatementEnd
+
