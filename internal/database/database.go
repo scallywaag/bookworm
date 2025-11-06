@@ -3,7 +3,6 @@ package database
 import (
 	"database/sql"
 
-	"github.com/labstack/echo/v4"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -21,13 +20,4 @@ func Init() (string, error) {
 	}
 
 	return "Database initialized successfully", nil
-}
-
-func GetDB(c echo.Context) *sql.DB {
-	db, ok := c.Get("db").(*sql.DB)
-	if !ok || db == nil {
-		c.Logger().Error("Database not found in context")
-		return nil
-	}
-	return db
 }

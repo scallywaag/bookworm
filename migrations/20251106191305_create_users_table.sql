@@ -5,7 +5,7 @@ CREATE TABLE users (
     id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
 	email TEXT UNIQUE NOT NULL,
-    password TEXT,
+    password TEXT NOT NULL,
     role TEXT NOT NULL DEFAULT 'user'
 );
 -- +goose StatementEnd

@@ -1,7 +1,7 @@
 DB_PATH := bookworm.db
 MIGRATIONS_DIR := migrations
 
-.PHONY: run watch tidy migrate up down create status clean
+.PHONY: run watch tidy migrate up down create status clean gen
 
 # Run the project
 run:
@@ -45,3 +45,6 @@ clean:
 	rm -f $(DB_PATH)
 	$(MAKE) migrate
 
+# Generate go code based on SQL queries
+gen:
+	sqlc generate
