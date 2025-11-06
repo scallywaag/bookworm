@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 	"github.com/scallywaag/bookworm/internal/database"
 	"github.com/scallywaag/bookworm/internal/router"
@@ -20,6 +21,7 @@ func main() {
 	e.Logger.Info(msg)
 	e.Use(database.DBMiddleware)
 
+	e.Use(middleware.Logger())
 	router.SetupRoutes(e)
 	e.Logger.Fatal(e.Start(":4000"))
 }
